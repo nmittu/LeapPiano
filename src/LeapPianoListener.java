@@ -57,8 +57,8 @@ public class LeapPianoListener extends Listener {
 
 		// System.out.println(fingers.count());
 
-		int x[] = new int[5];
-		int y[] = new int[5];
+		int x[] = new int[40];
+		int y[] = new int[40];
 
 		// for(int i = 0; i < frame.gestures().count(); i++){
 		// if(frame.gestures().get(i).type() == Gesture.Type.TYPE_KEY_TAP){
@@ -70,16 +70,16 @@ public class LeapPianoListener extends Listener {
 
 			final int i2 = i;
 
-			x[i] = (int) (width / 2 + (fingers.get(i).tipPosition().getX() * 3));
+			x[i] = (int) (width / 2 + (fingers.get(i).tipPosition().getX() * 4));
 			y[i] = (int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 2
-					+ (fingers.get(i).tipPosition().getZ() * 3));
+					+ (fingers.get(i).tipPosition().getZ() * 4));
 
 			if (fingers.get(i).tipPosition().getY() < 200 && fingers.get(i).direction().getY() < -0.5) {
 				// System.out.println(C.isAlive());
 				if (x[i] <= (width * 1 / 8) && (C == null || !C.isAlive())) {
 					C = new Thread() {
 						public void run() {
-							mChannels[0].noteOn(60, (int) Math.abs(fingers.get(i2).tipVelocity().getY()));
+							mChannels[0].noteOn(60, (int) (90+(Math.abs(fingers.get(i2).tipVelocity().getY())/10)));
 
 							try {
 								Thread.sleep(300);
@@ -96,7 +96,7 @@ public class LeapPianoListener extends Listener {
 					D = new Thread() {
 						public void run() {
 
-							mChannels[0].noteOn(62, (int) Math.abs(fingers.get(i2).tipVelocity().getY()));
+							mChannels[0].noteOn(62, (int) (90+(Math.abs(fingers.get(i2).tipVelocity().getY())/10)));
 
 							try {
 								Thread.sleep(300);
@@ -112,7 +112,7 @@ public class LeapPianoListener extends Listener {
 				} else if (x[i] > (width * 1 / 4) && x[i] <= (width * 3 / 8) && (E == null || !E.isAlive())) {
 					E = new Thread() {
 						public void run() {
-							mChannels[0].noteOn(64, (int) Math.abs(fingers.get(i2).tipVelocity().getY()));
+							mChannels[0].noteOn(64, (int) (90+(Math.abs(fingers.get(i2).tipVelocity().getY())/10)));
 
 							try {
 								Thread.sleep(300);
@@ -129,7 +129,7 @@ public class LeapPianoListener extends Listener {
 				} else if (x[i] > (width * 3 / 8) && x[i] <= (width * 1 / 2) && (F == null || !F.isAlive())) {
 					F = new Thread() {
 						public void run() {
-							mChannels[0].noteOn(65, (int) Math.abs(fingers.get(i2).tipVelocity().getY()));
+							mChannels[0].noteOn(65, (int) (90+(Math.abs(fingers.get(i2).tipVelocity().getY())/10)));
 
 							try {
 								Thread.sleep(300);
@@ -145,7 +145,7 @@ public class LeapPianoListener extends Listener {
 				} else if (x[i] > (width * 1 / 2) && x[i] <= (width * 5 / 8) && (G == null || !G.isAlive())) {
 					G = new Thread() {
 						public void run() {
-							mChannels[0].noteOn(67, (int) Math.abs(fingers.get(i2).tipVelocity().getY()));
+							mChannels[0].noteOn(67, (int) (90+(Math.abs(fingers.get(i2).tipVelocity().getY())/10)));
 
 							try {
 								Thread.sleep(300);
@@ -161,7 +161,7 @@ public class LeapPianoListener extends Listener {
 				} else if (x[i] > (width * 5 / 8) && x[i] <= (width * 3 / 4) && (A == null || !A.isAlive())) {
 					A = new Thread() {
 						public void run() {
-							mChannels[0].noteOn(69, (int) Math.abs(fingers.get(i2).tipVelocity().getY()));
+							mChannels[0].noteOn(69, (int) (90+(Math.abs(fingers.get(i2).tipVelocity().getY())/10)));
 
 							try {
 								Thread.sleep(300);
@@ -177,7 +177,7 @@ public class LeapPianoListener extends Listener {
 				} else if (x[i] > (width * 3 / 4) && x[i] <= (width * 7 / 8) && (B == null || !B.isAlive())) {
 					B = new Thread() {
 						public void run() {
-							mChannels[0].noteOn(71, (int) Math.abs(fingers.get(i2).tipVelocity().getY()));
+							mChannels[0].noteOn(71, (int) (90+(Math.abs(fingers.get(i2).tipVelocity().getY())/10)));
 
 							try {
 								Thread.sleep(300);
@@ -193,7 +193,7 @@ public class LeapPianoListener extends Listener {
 				} else if (x[i] > (width * 7 / 8) && (C7 == null || !C7.isAlive())) {
 					C7 = new Thread() {
 						public void run() {
-							mChannels[0].noteOn(72, (int) Math.abs(fingers.get(i2).tipVelocity().getY()));
+							mChannels[0].noteOn(72, (int) (90+(Math.abs(fingers.get(i2).tipVelocity().getY())/10)));
 
 							try {
 								Thread.sleep(300);
