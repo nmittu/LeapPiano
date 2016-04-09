@@ -11,7 +11,7 @@ import javax.swing.JLayeredPane;
 
 import com.leapmotion.leap.*;
 
-public class Sample {
+public class LeapPiano {
 	
 	public static void main(String[] args) throws IOException {
 		JFrame window = new JFrame();
@@ -35,7 +35,7 @@ public class Sample {
 		lp.add(panel, new Integer(2));
 		
 		
-		SampleListener listener = new SampleListener(panel);
+		LeapPianoListener listener = new LeapPianoListener(panel);
 		Controller controller = new Controller();
 		
 		controller.addListener(listener);

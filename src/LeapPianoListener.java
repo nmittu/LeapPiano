@@ -6,14 +6,12 @@ import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Synthesizer;
 
-import org.jfugue.player.Player;
-
 import com.leapmotion.leap.Controller;
 import com.leapmotion.leap.FingerList;
 import com.leapmotion.leap.Frame;
 import com.leapmotion.leap.Listener;
 
-public class SampleListener extends Listener {
+public class LeapPianoListener extends Listener {
 	private RectPanel panel;
 	private final double width = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 	
@@ -27,7 +25,7 @@ public class SampleListener extends Listener {
 	private Thread C7;
 	
 	
-	public SampleListener(RectPanel panel){
+	public LeapPianoListener(RectPanel panel){
 		super();
 		this.panel = panel;
 	}
