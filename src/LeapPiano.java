@@ -35,7 +35,7 @@ public class LeapPiano {
 		lp.add(panel, new Integer(2));
 		
 		
-		LeapPianoListener listener = new LeapPianoListener(panel);
+		LeapPianoListener listener = new LeapPianoListener(panel, backGround);
 		Controller controller = new Controller();
 		
 		controller.addListener(listener);

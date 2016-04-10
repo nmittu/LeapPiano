@@ -27,11 +27,15 @@ public class LeapPianoListener extends Listener {
 	private Synthesizer midiSynth;
 	private Instrument[] instr;
 	private MidiChannel[] mChannels;
+	
+	private BackGround backGround;
 
-	public LeapPianoListener(RectPanel panel) {
+	public LeapPianoListener(RectPanel panel, BackGround backg) {
 		super();
 		this.panel = panel;
 
+		backGround = backg;
+		
 		try {
 			midiSynth = MidiSystem.getSynthesizer();
 			midiSynth.open();
@@ -79,6 +83,9 @@ public class LeapPianoListener extends Listener {
 				if (x[i] <= (width * 1 / 8) && (C == null || !C.isAlive())) {
 					C = new Thread() {
 						public void run() {
+							backGround.addCircle((int)width /16, (int)(Toolkit.getDefaultToolkit().getScreenSize().getHeight() *0.75));
+							backGround.repaint();
+							
 							mChannels[0].noteOn(60, (int) (90+(Math.abs(fingers.get(i2).tipVelocity().getY())/10)));
 
 							try {
@@ -89,6 +96,8 @@ public class LeapPianoListener extends Listener {
 							}
 
 							mChannels[0].noteOff(60);
+							backGround.removeCircle((int)width /16, (int)(Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.75));
+							backGround.repaint();
 						}
 					};
 					C.start();
@@ -96,6 +105,9 @@ public class LeapPianoListener extends Listener {
 					D = new Thread() {
 						public void run() {
 
+							backGround.addCircle((int)((width * 1 / 8) +width /16), (int)(Toolkit.getDefaultToolkit().getScreenSize().getHeight() *0.75));
+							backGround.repaint();
+							
 							mChannels[0].noteOn(62, (int) (90+(Math.abs(fingers.get(i2).tipVelocity().getY())/10)));
 
 							try {
@@ -106,12 +118,18 @@ public class LeapPianoListener extends Listener {
 							}
 
 							mChannels[0].noteOff(62);
+							
+							backGround.removeCircle((int)((width * 1 / 8) +width /16), (int)(Toolkit.getDefaultToolkit().getScreenSize().getHeight() *0.75));
+							backGround.repaint();
 						}
 					};
 					D.start();
 				} else if (x[i] > (width * 1 / 4) && x[i] <= (width * 3 / 8) && (E == null || !E.isAlive())) {
 					E = new Thread() {
 						public void run() {
+							backGround.addCircle((int)((width * 1 / 4) +width /16), (int)(Toolkit.getDefaultToolkit().getScreenSize().getHeight() *0.75));
+							backGround.repaint();
+							
 							mChannels[0].noteOn(64, (int) (90+(Math.abs(fingers.get(i2).tipVelocity().getY())/10)));
 
 							try {
@@ -123,12 +141,17 @@ public class LeapPianoListener extends Listener {
 
 							mChannels[0].noteOff(64);
 
+							backGround.removeCircle((int)((width * 1 / 4) +width /16), (int)(Toolkit.getDefaultToolkit().getScreenSize().getHeight() *0.75));
+							backGround.repaint();
 						}
 					};
 					E.start();
 				} else if (x[i] > (width * 3 / 8) && x[i] <= (width * 1 / 2) && (F == null || !F.isAlive())) {
 					F = new Thread() {
 						public void run() {
+							backGround.addCircle((int)((width * 3 / 8) +width /16), (int)(Toolkit.getDefaultToolkit().getScreenSize().getHeight() *0.75));
+							backGround.repaint();
+							
 							mChannels[0].noteOn(65, (int) (90+(Math.abs(fingers.get(i2).tipVelocity().getY())/10)));
 
 							try {
@@ -139,12 +162,18 @@ public class LeapPianoListener extends Listener {
 							}
 
 							mChannels[0].noteOff(65);
+							
+							backGround.removeCircle((int)((width * 3 / 8) +width /16), (int)(Toolkit.getDefaultToolkit().getScreenSize().getHeight() *0.75));
+							backGround.repaint();
 						}
 					};
 					F.start();
 				} else if (x[i] > (width * 1 / 2) && x[i] <= (width * 5 / 8) && (G == null || !G.isAlive())) {
 					G = new Thread() {
 						public void run() {
+							backGround.addCircle((int)((width * 1 / 2) +width /16), (int)(Toolkit.getDefaultToolkit().getScreenSize().getHeight() *0.75));
+							backGround.repaint();
+							
 							mChannels[0].noteOn(67, (int) (90+(Math.abs(fingers.get(i2).tipVelocity().getY())/10)));
 
 							try {
@@ -155,12 +184,18 @@ public class LeapPianoListener extends Listener {
 							}
 
 							mChannels[0].noteOff(67);
+							
+							backGround.removeCircle((int)((width * 1 / 2) +width /16), (int)(Toolkit.getDefaultToolkit().getScreenSize().getHeight() *0.75));
+							backGround.repaint();
 						}
 					};
 					G.start();
 				} else if (x[i] > (width * 5 / 8) && x[i] <= (width * 3 / 4) && (A == null || !A.isAlive())) {
 					A = new Thread() {
 						public void run() {
+							backGround.addCircle((int)((width * 5 / 8) +width /16), (int)(Toolkit.getDefaultToolkit().getScreenSize().getHeight() *0.75));
+							backGround.repaint();
+							
 							mChannels[0].noteOn(69, (int) (90+(Math.abs(fingers.get(i2).tipVelocity().getY())/10)));
 
 							try {
@@ -171,12 +206,18 @@ public class LeapPianoListener extends Listener {
 							}
 
 							mChannels[0].noteOff(69);
+							
+							backGround.removeCircle((int)((width * 5 / 8) +width /16), (int)(Toolkit.getDefaultToolkit().getScreenSize().getHeight() *0.75));
+							backGround.repaint();
 						}
 					};
 					A.start();
 				} else if (x[i] > (width * 3 / 4) && x[i] <= (width * 7 / 8) && (B == null || !B.isAlive())) {
 					B = new Thread() {
 						public void run() {
+							backGround.addCircle((int)((width * 3 / 4) +width /16), (int)(Toolkit.getDefaultToolkit().getScreenSize().getHeight() *0.75));
+							backGround.repaint();
+							
 							mChannels[0].noteOn(71, (int) (90+(Math.abs(fingers.get(i2).tipVelocity().getY())/10)));
 
 							try {
@@ -187,12 +228,18 @@ public class LeapPianoListener extends Listener {
 							}
 
 							mChannels[0].noteOff(71);
+							
+							backGround.removeCircle((int)((width * 3 / 4) +width /16), (int)(Toolkit.getDefaultToolkit().getScreenSize().getHeight() *0.75));
+							backGround.repaint();
 						}
 					};
 					B.start();
 				} else if (x[i] > (width * 7 / 8) && (C7 == null || !C7.isAlive())) {
 					C7 = new Thread() {
 						public void run() {
+							backGround.addCircle((int)((width * 7 / 8) +width /16), (int)(Toolkit.getDefaultToolkit().getScreenSize().getHeight() *0.75));
+							backGround.repaint();
+							
 							mChannels[0].noteOn(72, (int) (90+(Math.abs(fingers.get(i2).tipVelocity().getY())/10)));
 
 							try {
@@ -204,6 +251,9 @@ public class LeapPianoListener extends Listener {
 
 							mChannels[0].noteOff(72);
 
+							backGround.removeCircle((int)((width * 7 / 8) +width /16), (int)(Toolkit.getDefaultToolkit().getScreenSize().getHeight() *0.75));
+							backGround.repaint();
+							
 						}
 					};
 					C7.start();
